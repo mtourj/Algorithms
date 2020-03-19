@@ -3,7 +3,22 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  
+  min_batches = None
+
+  for key in recipe.keys():
+    batches_with_ingredient = ingredients.get(key)
+
+    if(batches_with_ingredient == None):
+      min_batches = 0
+      break
+    else:
+      batches_with_ingredient //= recipe[key]
+    
+    if min_batches == None or min_batches > batches_with_ingredient:
+      min_batches = batches_with_ingredient
+
+  return min_batches
 
 
 if __name__ == '__main__':
